@@ -37,7 +37,7 @@ class CreateCContentsTable extends Migration
             $table->string('file_name');
             $table->string('slug');
             $table->string('price')->default(0);
-            $table->integer('off')->default(0);
+            $table->integer('off')->nullable()->default(0);
             $table->text('tags')->nullable();
 
             $table->timestamps();
