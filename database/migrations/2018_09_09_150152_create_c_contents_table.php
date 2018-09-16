@@ -14,22 +14,22 @@ class CreateCContentsTable extends Migration
     public function up()
     {
         Schema::create('c_contents', function (Blueprint $table) {
-
             $table->increments('id');
+            $table->integer('job_id')->index()->unsigned()->nullable();
+            $table->integer('field_id')->index()->unsigned()->nullable();
+            $table->integer('category_id')->index()->unsigned()->nullable();;
+            $table->integer('author_id')->index()->unsigned()->nullable();;
+
             $table->string('name');
             $table->string('thumbnail');
             $table->string('event_date');
             $table->string('place');
-            $table->string('job_id');
-            $table->string('field_id');
             $table->text('description')->nullable();
             $table->float('rate')->default(0.0);
             $table->integer('rate_count')->default(0);
             $table->integer('seen_count')->default(0);
             $table->integer('download_count')->default(0);
             $table->float('length')->default(0.0);
-            $table->string('category_id');
-            $table->string('author_id');
             $table->string('title');
             $table->string('sell')->nullable()->default(0);
             $table->integer('size')->default(0);
@@ -40,10 +40,9 @@ class CreateCContentsTable extends Migration
             $table->integer('off')->nullable()->default(0);
             $table->text('tags')->nullable();
 
-            $table->timestamps();
             $table->string('create_date');
             $table->string('update_date')->nullable();
-
+            $table->timestamps();
         });
     }
 

@@ -14,15 +14,14 @@ class CreateCCategoriesTable extends Migration
     public function up()
     {
         Schema::create('c_categories', function (Blueprint $table) {
-
             $table->increments('id');
-            $table->string('name');
-            $table->string('image');
 
-            $table->timestamps();
+            $table->string('name');
+            $table->string('image')->nullable();
+
             $table->string('create-date');
             $table->string('update-date')->nullable();
-
+            $table->timestamps();
         });
     }
 

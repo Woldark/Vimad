@@ -14,15 +14,14 @@ class CreateFieldsTable extends Migration
     public function up()
     {
         Schema::create('fields', function (Blueprint $table) {
-
             $table->increments('id');
+
             $table->string('name');
             $table->string('image')->nullable();
 
-            $table->timestamps();
             $table->string('create_date');
             $table->string('update_date')->nullable();
-
+            $table->timestamps();
         });
     }
 

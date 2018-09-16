@@ -14,8 +14,10 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-
             $table->increments('id');
+            $table->integer('job_id')->index()->unsigned()->nullable();
+            $table->integer('field_id')->index()->unsigned()->nullable();
+
             $table->string('f_name');
             $table->string('l_name');
             $table->string('email')->unique();
@@ -24,17 +26,14 @@ class CreateUsersTable extends Migration
             $table->string('image')->nullable();
             $table->tinyInteger('email_confirm')->default(0);
             $table->tinyInteger('phone_confirm')->default(0);
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-
-            $table->string('job_id');
-            $table->string('field_id');
-
             $table->rememberToken();
 
-            $table->timestamps();
             $table->string('create_date');
             $table->string('update_date')->nullable();
+            $table->timestamps();
+
+
         });
     }
 
