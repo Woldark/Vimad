@@ -24,6 +24,10 @@ class CreateCCommentsTable extends Migration
             $table->string('create_date');
             $table->string('update_date')->nullable();
             $table->timestamps();
+
+            $table->foreign('content_id')->references('id')->on('c_contents')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

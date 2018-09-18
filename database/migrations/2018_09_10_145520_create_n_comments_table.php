@@ -24,6 +24,10 @@ class CreateNCommentsTable extends Migration
             $table->string('create_date');
             $table->string('update_date')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('cont_id')->references('id')->on('n_contents')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

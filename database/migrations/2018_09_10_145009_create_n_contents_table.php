@@ -30,6 +30,9 @@ class CreateNContentsTable extends Migration
             $table->string('update_date')->nullable();
             $table->timestamps();
 
+            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('field_id')->references('id')->on('fields')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('cat_id')->references('id')->on('c_categories')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
