@@ -26,6 +26,9 @@ class CreateACommentsTable extends Migration
             $table->string('update_date')->nullable();
             $table->timestamps();
 
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('cont_id')->references('id')->on('a_contents')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

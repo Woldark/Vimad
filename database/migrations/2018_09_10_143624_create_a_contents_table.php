@@ -38,6 +38,11 @@ class CreateAContentsTable extends Migration
             $table->string('update_date')->nullable();
             $table->timestamps();
 
+            $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('field_id')->references('id')->on('fields')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('cat_id')->references('id')->on('c_categories')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 
