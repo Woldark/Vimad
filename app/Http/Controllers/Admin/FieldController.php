@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Field;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class FieldController extends Controller
@@ -26,7 +27,7 @@ class FieldController extends Controller
         $field->save();
 
         toast('زمینه ' . $name . ' اضافه شد', 'success', 'bottom-right');
-        return redirect()->route('admin::fields.index');
+        return redirect()->route('Admin::fields.index');
     }
 
     public function edit($id)
@@ -45,7 +46,7 @@ class FieldController extends Controller
         $field->save();
 
         toast('زمینه ' . $name . ' به روز شد', 'success', 'bottom-right');
-        return redirect()->route('admin::fields.index');
+        return redirect()->route('Admin::fields.index');
     }
 
     public function delete($id)
@@ -55,7 +56,7 @@ class FieldController extends Controller
             $field->delete();
         } catch (\Exception $exception) {
             toast('مشکلی پیش آمده است', 'error', 'bottom-right');
-            return redirect()->route('admin::fields.index');
+            return redirect()->route('Admin::fields.index');
 
         }
     }

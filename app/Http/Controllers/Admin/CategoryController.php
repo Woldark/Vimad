@@ -54,7 +54,7 @@ class CategoryController extends Controller
         $category->save();
 
         toast('دسته بندی' . $name . 'اضافه شد', 'success', 'bottom-right');
-        return redirect()->route('admin::categories.index');
+        return redirect()->route('Admin::categories.index');
 
     }
 
@@ -68,7 +68,7 @@ class CategoryController extends Controller
         $category->save();
 
         toast('دسته بندی' . $name . 'به روز شد', 'success', 'bottom-right');
-        return redirect()->route('admin::categories.index');
+        return redirect()->route('Admin::categories.index');
     }
 
     public function delete($id)
@@ -77,10 +77,10 @@ class CategoryController extends Controller
             $category = C_category::find($id);
             $category->delete();
             toast('دسته بندی' . $category->name . 'حذف شد', 'success', 'bottom-right');
-            return redirect()->route('admin::categories.index');
+            return redirect()->route('Admin::categories.index');
         } catch (\Exception $exception) {
             toast('مشکلی پیش آمده است', 'error', 'bottom-right');
-            return redirect()->route('admin::categories.index');
+            return redirect()->route('Admin::categories.index');
         }
     }
 
