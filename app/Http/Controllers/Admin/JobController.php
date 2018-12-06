@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Job;
 use Illuminate\Http\Request;
 
@@ -10,12 +11,12 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::get();
-        return view('Admin.jobs', compact('jobs'));
+        return view('admin.jobs', compact('jobs'));
     }
 
     public function create()
     {
-        return view('Admin.job_create');
+        return view('admin.job_create');
     }
 
     public function save(Request $request)
@@ -31,7 +32,7 @@ class JobController extends Controller
     public function edit($id)
     {
         $job = Job::find($id);
-        return view('Admin.job_edit', compact('job'));
+        return view('admin.job_edit', compact('job'));
     }
 
     public function update(Request $request)

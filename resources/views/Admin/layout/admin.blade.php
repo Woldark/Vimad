@@ -1,4 +1,4 @@
-@extends('admin.layouts.base')
+@extends('Admin.layout.base')
 
 @section('sidebar')
     <ul class="sidebar-menu">

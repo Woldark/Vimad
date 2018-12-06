@@ -1,4 +1,4 @@
-@extends('admin.layouts.admin')
+@extends('Admin.layout.admin')
 
 @section('style')
     <style>
@@ -38,7 +38,7 @@
                             <li>
                                 <span class="text" style="margin-right: 10px">{{ $category->name }}</span>
                                 <div class="tools">
-                                    <a href="{{ route('admin::category.edit', $category->id) }}" class="link">
+                                    <a href="{{ route('Admin', $category->id) }}" class="link">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="{{ route('admin::category.delete', $category->id) }}" class="link">
