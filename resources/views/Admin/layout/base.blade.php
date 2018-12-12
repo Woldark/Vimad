@@ -5,13 +5,13 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     @yield('meta')
     <title>{{ config('app.name') }} | Admin</title>
-    <link rel="stylesheet" href="{{ asset('admin') }}">
+    <link rel="stylesheet" href="{{ asset('/admin/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/admin/dist/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/admin/dist/css/ionicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/admiin/dist/css/iransans.css') }}">
-    <link rel="stylesheet" href="{{ asset('/admn/dist/css/AdminLTE.css') }}">
+    <link rel="stylesheet" href="{{ asset('/admin/dist/css/iransans.css') }}">
+    <link rel="stylesheet" href="{{ asset('/admin/dist/css/AdminLTE.css') }}">
     <link rel="stylesheet" href="{{ asset('/admin/dist/css/skins/skin-green.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin') }}">
+    <link rel="stylesheet" href="{{ asset('/admin/dist/css/bootstrap-rtl.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/admin/dist/css/mine.css') }}">
     <style>
         .box-title {
@@ -100,7 +100,7 @@
 </div>
 <script src="{{ asset('/admin/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
 <script src="{{ asset('/admin/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('Admin') }}"></script>
+<script src="{{ asset('/admin/dist/js/app.min.js') }}"></script>
 <script src="{{ asset('/admin/dist/js/polyfill.min.js') }}"></script>
 <script type='application/javascript' src="{{ asset('/admin/dist/js/fast_click.js') }}"></script>
 <script type='application/javascript'>

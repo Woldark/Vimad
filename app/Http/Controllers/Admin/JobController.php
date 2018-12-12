@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Job;
+use App\Libraries\JDF;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -22,9 +23,15 @@ class JobController extends Controller
     public function save(Request $request)
     {
         $name = $request->get('name');
+
         $job = new Job();
+        $jdf = new JDF();
+
         $job->name = $name;
+        $job->create_date = $jdf->getTimestamp();
+
         $job->save();
+
         toast('شغل ' . $name . ' اضافه شد', 'success', 'bottom-right');
         return redirect()->route('admin::jobs.index');
     }
