@@ -18,9 +18,9 @@
 @section('header')
     <section class="content-header">
         <h1>
-            دسته بندی ها
+            اخبار
             <br>
-            <small>لیست دسته بندی ها</small>
+            <small>لیست اخبار</small>
         </h1>
     </section>
 @endsection
@@ -30,18 +30,18 @@
         <div class="col-lg-10 col-lg-offset-1">
             <div class="box box-success">
                 <div class="box-header">
-                    <h3 class="box-title">لیست دسته بندی ها</h3>
+                    <h3 class="box-title">لیست اخبار</h3>
                 </div>
                 <div class="box-body">
                     <ul class="todo-list">
-                        @foreach($categories as $category)
+                        @foreach($newses as $news)
                             <li>
-                                <span class="text" style="margin-right: 10px">{{ $category->name }}</span>
+                                <span class="text" style="margin-right: 10px">{{ $news->name }}</span>
                                 <div class="tools">
-                                    <a href="{{ route('admin::category.edit', $category->id) }}" class="link">
+                                    <a href="{{ route('admin::news.edit', $news->id) }}" class="link">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="{{ route('admin::category.delete', $category->id) }}" class="link">
+                                    <a href="{{ route('admin::news.delete', $news->id) }}" class="link">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
                                 </div>
@@ -50,8 +50,7 @@
                     </ul>
                 </div>
                 <div class="box-footer clearfix no-border">
-                    <a class="btn btn-success pull-right" href="{{ route('admin::category.create') }}">دسته بندی
-                        جدید</a>
+                    <a class="btn btn-success pull-right" href="{{ route('admin::news.create') }}">خبر جدید</a>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Field;
 use App\Http\Controllers\Controller;
+use Hatamiarash7\JDF\Generator;
 use Illuminate\Http\Request;
 
 class FieldController extends Controller
@@ -22,8 +23,13 @@ class FieldController extends Controller
     public function save(Request $request)
     {
         $name = $request->get('name');
+
         $field = new Field();
+        $jdf = new Generator();
+
         $field->name = $name;
+        $field->create_date = $jdf->getTimestamp();
+
         $field->save();
 
         toast('زمینه ' . $name . ' اضافه شد', 'success', 'bottom-right');

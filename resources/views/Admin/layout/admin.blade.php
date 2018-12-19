@@ -75,6 +75,56 @@
                 </li>
             </ul>
         </li>
+
+        <li class="treeview
+        @if (Route::is('admin::tags.index')) active @endif
+        @if (Route::is('admin::tag.create')) active @endif
+                ">
+            <a href="#"><i class="fa fa-user"></i> <span>اخبار</span>
+                <i class="fa fa-angle-left pull-left"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{{ route('admin::tags.index') }}"><i class="fa fa-circle-o"></i> لیست اخبار</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin::tag.create') }}"><i class="fa fa-circle-o"></i> خبر جدید</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="treeview
+        @if (Route::is('admin::tags.index')) active @endif
+        @if (Route::is('admin::tag.create')) active @endif
+                ">
+            <a href="#"><i class="fa fa-user"></i> <span>مقالات</span>
+                <i class="fa fa-angle-left pull-left"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{{ route('admin::tags.index') }}"><i class="fa fa-circle-o"></i> لیست مقالات</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin::tag.create') }}"><i class="fa fa-circle-o"></i> مقاله جدید</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="treeview
+        @if (Route::is('admin::tags.index')) active @endif
+        @if (Route::is('admin::tag.create')) active @endif
+                ">
+            <a href="#"><i class="fa fa-user"></i> <span>محتوا</span>
+                <i class="fa fa-angle-left pull-left"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{{ route('admin::tag.create') }}"><i class="fa fa-circle-o"></i> ایجاد محتوا</a>
+                </li>
+            </ul>
+        </li>
+
+
         <li class="treeview">
             <a href="#"><i class="fa fa-info-circle"></i> <span>وضعیت</span>
                 <i class="fa fa-angle-left pull-left"></i></a>

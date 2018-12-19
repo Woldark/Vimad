@@ -50,4 +50,26 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/tag_edit/{id}', 'admin\TagController@edit')->name('admin::tag.edit');
     Route::get('/tag/delete/{id}', 'admin\TagController@delete')->name('admin::tag.delete');
     Route::post('/tag_update', 'admin\TagController@update')->name('admin::tag.update');
+
+    Route::get('/newses', 'admin\NewsController@index')->name('admin::news.index');
+    Route::get('/news_create', 'admin\NewsController@create')->name('admin::news.create');
+    Route::post('/news_create', 'admin\NewsController@save')->name('admin::news.create');
+    Route::get('/news_edit/{id}', 'admin\NewsController@edit')->name('admin::news.edit');
+    Route::get('/news/delete/{id}', 'admin\NewsController@delete')->name('admin::news.delete');
+    Route::post('/news_update', 'admin\NewsController@update')->name('admin::news.update');
+
+    Route::get('/documents', 'admin\DocumentController@index')->name('admin::documents.index');
+    Route::get('/document_create', 'admin\DocumentController@create')->name('admin::document.create');
+    Route::post('/document_create', 'admin\DocumentController@save')->name('admin::document.create');
+    Route::get('/document_edit/{id}', 'admin\DocumentController@edit')->name('admin::document.edit');
+    Route::get('/document/delete/{id}', 'admin\DocumentController@delete')->name('admin::document.delete');
+    Route::post('/document_update', 'admin\DocumentController@update')->name('admin::document.update');
+
+    Route::get('/contents', 'admin\ContentController@index')->name('admin::contents.index');
+    Route::get('/content_create', 'admin\ContentController@create')->name('admin::content.create');
+    Route::post('/content_create', 'admin\ContentController@save')->name('admin::content.create');
+    Route::get('/content_edit/{id}', 'admin\ContentController@edit')->name('admin::content.edit');
+    Route::get('/content/delete/{id}', 'admin\ContentController@delete')->name('admin::content.delete');
+    Route::post('/content_update', 'admin\ContentController@update')->name('admin::content.update');
+
 });

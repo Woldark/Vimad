@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Job;
 use App\Libraries\JDF;
+use Hatamiarash7\JDF\Generator;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -25,7 +26,7 @@ class JobController extends Controller
         $name = $request->get('name');
 
         $job = new Job();
-        $jdf = new JDF();
+        $jdf = new Generator();
 
         $job->name = $name;
         $job->create_date = $jdf->getTimestamp();

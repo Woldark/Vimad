@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\C_category;
 use App\Http\Controllers\Controller;
+use Hatamiarash7\JDF\Generator;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -49,8 +50,13 @@ class CategoryController extends Controller
     public function save(Request $request)
     {
         $name = $request->get('name');
+
         $category = new C_category();
+        $jdf = new Generator();
+
         $category->name = $name;
+        $category->create_date = $jdf->getTimestamp();
+
         $category->save();
 
         toast('دسته بندی' . $name . 'اضافه شد', 'success', 'bottom-right');
