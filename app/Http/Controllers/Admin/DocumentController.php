@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\A_content;
 use App\Libraries\JDF;
-use Hatamiarash7\JDF\Generator;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
@@ -24,10 +23,10 @@ class DocumentController extends Controller
     {
         $name = $request->get('name');
         $document = new A_content();
-        $jdf = new Generator();
+
 
         $document->name = $name;
-        $document->create_date = $jdf->getTimestamp();
+
 
         $document->save();
         toast('سند ' . $name . ' اضافه شد', 'success', 'bottom-right');

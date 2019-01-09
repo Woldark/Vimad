@@ -26,6 +26,11 @@ class User extends Authenticatable
         return $this->hasMany(A_comment::class, 'user_id');
     }
 
+    public function verifyUser()
+    {
+        return $this->hasOne(VerifyUser::class, 'user_id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

@@ -17,8 +17,8 @@ class CreateCContentsTable extends Migration
             $table->increments('id');
             $table->integer('job_id')->index()->unsigned()->nullable();
             $table->integer('field_id')->index()->unsigned()->nullable();
-            $table->integer('category_id')->index()->unsigned()->nullable();;
-            $table->integer('author_id')->index()->unsigned()->nullable();;
+            $table->integer('category_id')->index()->unsigned()->nullable();
+            $table->integer('author_id')->index()->unsigned()->nullable();
 
             $table->string('name');
             $table->string('thumbnail');

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use App\User;
+use App\VerifyUser;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -43,7 +45,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -58,7 +60,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\User
      */
     protected function create(array $data)
@@ -68,5 +70,31 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $verifyUser = VerifyUser::create([
+            'user_id' => $user->id,
+//            'token' => Hash::make($data['email'])
+        ]);
+
+        Mail::to($user->email)->queue(new VerifyUser($user));
+        return $user;
+    }
+
+    public function verifyUser($token)
+    {
+        $verifyuser = VerifyUser::where('token', $token)->first();
+        if (isset($verifyuser)) {
+            $user = $verifyuser->user;
+            if (!$user->verified) {
+                $verifyuser->user->verified = 1;
+                $verifyuser->user->save();
+                $status = "ایمیل شما تایید شد!! . میتوانید وارد شوید!!";
+            } else {
+                $status = "ایمیل شما قبلا تایید شده است میتوانید وارد شوید ";
+            }
+        } else {
+            return redirect('/login')->with('warning', "متاسفانه ایمیل شما تایید نشده است");
+        }
+        return redirect('/login')->with('status', $status);
     }
 }

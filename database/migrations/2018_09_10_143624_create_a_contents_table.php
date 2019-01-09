@@ -24,7 +24,6 @@ class CreateAContentsTable extends Migration
             $table->text('description')->nullable();
             $table->string('file_name');
             $table->string('format');
-            $table->string('publish_date')->nullable();
             $table->float('rate')->default(0.0);
             $table->integer('rate_count')->default(0);
             $table->integer('download_count')->default(0);
@@ -35,6 +34,7 @@ class CreateAContentsTable extends Migration
             $table->string('demo_file')->nullable();
 
             $table->string('create_date');
+            $table->string('publish_date')->nullable();
             $table->string('update_date')->nullable();
             $table->timestamps();
 

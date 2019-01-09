@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Hatamiarash7\JDF\Generator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -31,5 +32,15 @@ class A_content extends Model
     public function a_content(): HasMany
     {
         return $this->hasMany(A_comment::class, 'cont_id');
+    }
+
+
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function (A_content $a_content) {
+            $jdf = new Generator();
+            $a_content->create_date = $jdf->getTimestamp();
+        });
     }
 }

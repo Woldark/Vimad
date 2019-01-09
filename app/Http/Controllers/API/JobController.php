@@ -21,6 +21,7 @@ class JobController extends Controller
     {
         $job = Job::find($job);
 
+
         return response()->json([
             'error' => false,
             'job' => $job

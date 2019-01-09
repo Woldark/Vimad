@@ -4,11 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\C_category;
 use App\Http\Controllers\Controller;
-use Hatamiarash7\JDF\Generator;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+    private $user_path;
+
+    public function __construct()
+    {
+        $this->user_path = public_path('images/category');
+        $this->makeDirectories();
+    }
 
     public function index()
     {
@@ -52,10 +59,10 @@ class CategoryController extends Controller
         $name = $request->get('name');
 
         $category = new C_category();
-        $jdf = new Generator();
+
 
         $category->name = $name;
-        $category->create_date = $jdf->getTimestamp();
+
 
         $category->save();
 
@@ -90,4 +97,11 @@ class CategoryController extends Controller
         }
     }
 
+    private function makeDirectpries()
+    {
+        if (!is_dir($this->user_path)) {
+            mkdir($this->user_path, 0777, true);
+        }
+        chmod($this->user_path, 0777);
+    }
 }

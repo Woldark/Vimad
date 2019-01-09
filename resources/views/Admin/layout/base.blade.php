@@ -112,7 +112,9 @@
 </script>
 <script src="{{ asset('admin/dist/js/mine.js') }}"></script>
 <script src="{{ asset('admin/dist/js/sweetalert2.all.js') }}"></script>
-{{--@include('sweetalert::alert')--}}
+<link href="{{asset('css/dropzone.css')}}" rel="stylesheet">
+<script src="{{asset('js/dropzone.js')}}"></script>
+@include('sweetalert::alert')
 @yield('script')
 </body>
 </html>

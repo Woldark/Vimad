@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\C_content;
-use Hatamiarash7\JDF\Generator;
 use Zend\Diactoros\Request;
 
 class ContentController extends Controller
@@ -21,15 +20,12 @@ class ContentController extends Controller
 
     public function save(Request $request)
     {
-        $name = $request->get('name');
+        $content = $request->get('name');
 
         $content = new C_content();
-        $jdf = new Generator();
-
         $content->name = $name;
-        $content->create_date = $jdf->getTimestamp();
-
         $content->save();
+
         toast('محتوا ' . $name . ' اضافه شد', 'success', 'bottom-right');
         return redirect()->route('admin::contents.index');
     }

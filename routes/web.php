@@ -14,8 +14,12 @@
 Route::get('/dashboard', function () {
     return view('admin.layout.admin');
 });
+Route::get('mail/send', 'MailController@send');
 
 Auth::routes();
+Route:: get('/user/verify/{token}', 'Auth/RegisterController@verifyUser');
+
+//Route::get();
 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -71,5 +75,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/content_edit/{id}', 'admin\ContentController@edit')->name('admin::content.edit');
     Route::get('/content/delete/{id}', 'admin\ContentController@delete')->name('admin::content.delete');
     Route::post('/content_update', 'admin\ContentController@update')->name('admin::content.update');
+    Route::post('/content_dropzone', 'admin\ContentController@dropzone')->name('admin::content.dropzone');
 
 });

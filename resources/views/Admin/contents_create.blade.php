@@ -42,4 +42,13 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form action="{{route('admin::content.dropzone')}}" class="dropzone" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
