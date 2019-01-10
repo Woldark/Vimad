@@ -42,4 +42,38 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form method="post" action="{{route('admin::document.upload')}}" enctype="multipart/form-data"
+                      class="dropzone" id="dropzone">
+                    {{ csrf_field() }}
+
+                    {{--<input type="file" name="file" />--}}
+
+                </form>
+
+                <script type="text/javascript">
+                    Dropzone.options.dropzone =
+                        {
+                            maxFilesize: 50,
+                            renameFile: function (file) {
+                                var dt = new Date();
+                                var time = dt.getTime();
+                                return time + file.name;
+                            },
+                            acceptedFiles: ".pdf",
+                            addRemoveLinks: true,
+                            timeout: 5000,
+                            success: function (file, response) {
+                                console.log(response);
+                            },
+                            error: function (file, response) {
+                                return false;
+                            }
+                        };
+                </script>
+            </div>
+        </div>
+    </div>
 @endsection

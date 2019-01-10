@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="{{ asset('/admin/dist/css/skins/skin-green.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/admin/dist/css/bootstrap-rtl.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/admin/dist/css/mine.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script>
     <style>
         .box-title {
             color: #00a65a;
@@ -112,8 +116,8 @@
 </script>
 <script src="{{ asset('admin/dist/js/mine.js') }}"></script>
 <script src="{{ asset('admin/dist/js/sweetalert2.all.js') }}"></script>
-<link href="{{asset('css/dropzone.css')}}" rel="stylesheet">
-<script src="{{asset('js/dropzone.js')}}"></script>
+{{--<link href="{{asset('css/dropzone.css')}}" rel="stylesheet">--}}
+{{--<script src="{{asset('js/dropzone.js')}}"></script>--}}
 @include('sweetalert::alert')
 @yield('script')
 </body>

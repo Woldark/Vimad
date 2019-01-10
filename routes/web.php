@@ -68,6 +68,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/document_edit/{id}', 'admin\DocumentController@edit')->name('admin::document.edit');
     Route::get('/document/delete/{id}', 'admin\DocumentController@delete')->name('admin::document.delete');
     Route::post('/document_update', 'admin\DocumentController@update')->name('admin::document.update');
+    Route::post('/document_upload', 'admin\DocumentController@upload')->name('admin::document.upload');
 
     Route::get('/contents', 'admin\ContentController@index')->name('admin::contents.index');
     Route::get('/content_create', 'admin\ContentController@create')->name('admin::content.create');
@@ -75,6 +76,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/content_edit/{id}', 'admin\ContentController@edit')->name('admin::content.edit');
     Route::get('/content/delete/{id}', 'admin\ContentController@delete')->name('admin::content.delete');
     Route::post('/content_update', 'admin\ContentController@update')->name('admin::content.update');
-    Route::post('/content_dropzone', 'admin\ContentController@dropzone')->name('admin::content.dropzone');
+    Route::post('/content_upload', 'admin\ContentController@upload')->name('admin::content.upload');
 
 });

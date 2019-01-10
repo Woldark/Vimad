@@ -1,12 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\C_content;
 use Zend\Diactoros\Request;
 
 class ContentController extends Controller
 {
+    private $path;
+
+    public function __construct()
+    {
+        $this->path = public_path('/store');
+        $this->makeDirectories();
+    }
+
     public function index()
     {
         $contents = C_content::get();
@@ -15,7 +24,7 @@ class ContentController extends Controller
 
     public function create()
     {
-        return view('admin.content_create');
+        return view('admin.contents_create');
     }
 
     public function save(Request $request)
@@ -33,7 +42,7 @@ class ContentController extends Controller
     public function edit($id)
     {
         $content = C_content::find($id);
-        return view('admin.content_edit', compact('content'));
+        return view('admin.contents_edit', compact('content'));
 
     }
 
@@ -67,5 +76,23 @@ class ContentController extends Controller
             return redirect()->route('admin::contents.index');
         }
 
+    }
+
+    public function upload(Request $request)
+    {
+        $file = $request->file('file');
+        $token = str_random(3);
+        $name = $token . '.' . $file->getClientOriginalExtension();
+        $file->move($this->path, $name);
+
+        return response::json(['file_name' => $name], 200);
+    }
+
+    public function makeDirectories()
+    {
+        if (!is_dir($this->path)) {
+            mkdir($this->path, 0777, true);
+        }
+        chmod($this->path, 0777);
     }
 }

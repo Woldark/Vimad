@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class DocumentController extends Controller
 {
+    private $path;
+
+    public function __construct()
+    {
+        $this->path = public_path('/document');
+        $this->makeDirectories();
+    }
+
     public function index()
     {
         $documents = A_content::get();
@@ -70,5 +78,22 @@ class DocumentController extends Controller
 
             return redirect()->route('admin::documents.index');
         }
+    }
+
+    public function upload(Request $request)
+    {
+        $file = $request->file('file');
+        $token = str_random(3);
+        $name = $token . '.' . $file()->getClientOriginalName();
+        $file->move($this->path, $name);
+        return response::json(['file_name' => $name]);
+    }
+
+    public function makeDirectories()
+    {
+        if (!is_dir($this->path)) {
+            mkdir($this->path, 0777, true);
+        }
+        chmod($this->path, 0777);
     }
 }
