@@ -27,7 +27,6 @@ class CreateAContentsTable extends Migration
             $table->float('rate')->default(0.0);
             $table->integer('rate_count')->default(0);
             $table->integer('download_count')->default(0);
-            $table->text('download_count')->nullable();
             $table->integer('sell')->nullable()->default(0);
             $table->integer('off')->nullable()->default(0);
             $table->integer('price')->default(0);

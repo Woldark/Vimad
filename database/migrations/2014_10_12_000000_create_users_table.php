@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->integer('field_id')->index()->unsigned()->nullable();
 
             $table->string('f_name');
-            $table->boolean('verified')->default('false');
+            $table->boolean('verified')->default(false);
             $table->string('l_name');
             $table->string('email')->unique();
             $table->string('phone')->unique();

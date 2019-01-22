@@ -79,3 +79,4 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/content_upload', 'admin\ContentController@upload')->name('admin::content.upload');
 
 });
+Route::get('/home', 'HomeController@index')->name('home');
