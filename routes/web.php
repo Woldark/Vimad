@@ -15,6 +15,9 @@ Route::get('/dashboard', function () {
     return view('admin.layout.admin');
 });
 Route::get('mail/send', 'MailController@send');
+Route::get('/video', function () {
+    return view('Main.video');
+});
 
 Auth::routes();
 Route:: get('/user/verify/{token}', 'Auth/RegisterController@verifyUser');
